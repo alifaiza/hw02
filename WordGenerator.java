@@ -1,7 +1,7 @@
 package hw02;
 import java.util.Scanner;
 import java.io.*;
-//lol
+
 public class WordGenerator {
 
     public String filename;
@@ -20,47 +20,23 @@ public class WordGenerator {
 
     public String next() {
         String nextToken = text.next();
-        
-        if (nextToken instanceof String) {
-            wordCounter = +1;
-        }
-        if (nextToken.endsWith(".") || nextToken.endsWith("!") || nextToken.endsWith("?")) {
-            sentenceCounter += 1;
-        }
         return nextToken;
     }
 
     public int getWordCount() {
+        while(text.hasNext()) {
+        	if(text.next().equals(null)){
+        		break;
+        	}
+            wordCounter += 1;
+        }
         
         return wordCounter;
-    }
+     }
 
-    public int getSentenceCount() {
-
-        return sentenceCounter;
-    }
-    
-    public void printWords() {
-        while (text.hasNext()) {
-            System.out.println(text.next());
-        }
-    }
-    
-    public int count() {
-        while (text.hasNext()) {
-            return (text.getWordCount());
-            //System.out.println(getSentenceCount());
-            
-        }
-    }
-    
     public static void main(String[] args) throws IOException  {
-        WordGenerator boom = new WordGenerator("/home/zvidzwat/Desktop/CSC207/hw02/src/hw02/test");
-        System.out.println(boom.next());
-        boom.printWords();
-        System.out.println(boom.count());
-        System.out.println(boom.getWordCount()); 
-        
+        WordGenerator boom = new WordGenerator("test");
+       System.out.println(boom.getWordCount());
     }
 
 }
