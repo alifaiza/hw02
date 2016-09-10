@@ -1,7 +1,7 @@
 package hw02;
 import java.util.Scanner;
 import java.io.*;
-
+//lol
 public class WordGenerator {
 
     public String filename;
