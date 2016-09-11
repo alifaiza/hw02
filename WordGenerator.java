@@ -1,6 +1,10 @@
 package hw02;
 import java.util.Scanner;
 import java.io.*;
+import java.io.File;
+
+
+
 
 public class WordGenerator {
 
@@ -33,10 +37,27 @@ public class WordGenerator {
         
         return wordCounter;
      }
+    
+    public int getSentenceCount() {
+
+    	
+    	while(text.hasNext()) {
+ 
+    String nextToken = text.next();
+    String ch = Character.toString(nextToken.charAt(nextToken.length() -1));
+    System.out.println(ch);
+    	if(ch.equals(".") || ch.equals("!") || ch.equals("?")) {
+   
+    		sentenceCounter = sentenceCounter + 1;
+    	}
+    	}   	
+    	return sentenceCounter;
+    }
+    	
 
     public static void main(String[] args) throws IOException  {
         WordGenerator boom = new WordGenerator("test");
-       System.out.println(boom.getWordCount());
+       System.out.println(boom.getSentenceCount());
     }
 
 }
