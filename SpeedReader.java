@@ -49,7 +49,15 @@ public void demonstratePanel() throws InterruptedException, IOException {
 
 public static void main(String[] args) throws InterruptedException, IOException {
 	
-	System.out.println("HIE");
+	
+	
+	
+	if (args.length != 5){
+		System.out.println("Invalid input! Please enter your command this way--> \n"
+				+ "SpeedReader <filename> <width> <height> <fontSize> <wpm>");
+		return;
+	}
+	
 	String filename = args[0];
 	int width = Integer.parseInt(args[1]);
 	int height = Integer.parseInt(args[2]);
@@ -57,8 +65,12 @@ public static void main(String[] args) throws InterruptedException, IOException 
 	int wpm = Integer.parseInt(args[4]);
 	
 	
+	WordGenerator boom = new WordGenerator(filename);
 	SpeedReader sReader = new SpeedReader(filename, width, height, fontSize,wpm);
 	sReader.demonstratePanel();
+	System.out.printf("Number of sentences read: %d\n", boom.getSentenceCount());
+	System.out.printf("Number of words read: %d", boom.getWordCount());
+	
 	
 	
 	}
