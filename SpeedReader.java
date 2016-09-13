@@ -1,7 +1,4 @@
 package hw02;
-
-
-
 import java.awt.*;
 import java.io.IOException;
 import java.util.Scanner;
@@ -29,17 +26,16 @@ public void demonstratePanel() throws InterruptedException, IOException {
 	
 	Scanner text = new Scanner(new File(this.filename));
 	Font f = new Font("Courier", Font.BOLD, this.fontSize);
-	DrawingPanel panel = new DrawingPanel(100, 100);
+	DrawingPanel panel = new DrawingPanel(this.width, this.height);
 	Graphics g = panel.getGraphics();
 	g.setFont(f);
 	
-    
-	while (text.hasNext()) {
+    while (text.hasNext()) {
    	g.setColor(Color.black);
     g.drawString(text.next(), 50, 50);
     Thread.sleep(200);
     g.setColor(Color.white);
-    g.fillRect(0, 0, 399, 399);
+    g.fillRect(0, 0, width, height);
     }
 	text.close();
     
@@ -48,9 +44,6 @@ public void demonstratePanel() throws InterruptedException, IOException {
 
 
 public static void main(String[] args) throws InterruptedException, IOException {
-	
-	
-	
 	
 	if (args.length != 5){
 		System.out.println("Invalid input! Please enter your command this way--> \n"
@@ -64,14 +57,10 @@ public static void main(String[] args) throws InterruptedException, IOException 
 	int fontSize = Integer.parseInt(args[3]);
 	int wpm = Integer.parseInt(args[4]);
 	
-	
 	WordGenerator boom = new WordGenerator(filename);
 	SpeedReader sReader = new SpeedReader(filename, width, height, fontSize,wpm);
 	sReader.demonstratePanel();
 	System.out.printf("Number of sentences read: %d\n", boom.getSentenceCount());
 	System.out.printf("Number of words read: %d", boom.getWordCount());
-	
-	
-	
 	}
 }
